@@ -17,10 +17,11 @@ class Table {
   // Atrributs
 
   int pieds = 4;
-  double? hauteur;
-  double? largeur;
-  double? longueur;
+  double hauteur;
+  double largeur;
+  double longueur;
   String matiere = "Bois";
+  bool extensible;
 
   // Constructeur
 
@@ -47,9 +48,23 @@ class Table {
 
 
   // Façons 4 (avec attributs required)
-  Table({required this.pieds, required this.hauteur, required this.largeur, required this.longueur, required this.matiere}){}
+  Table({required this.pieds, required this.hauteur, required this.largeur, required this.longueur, required this.matiere, this.extensible = true}){}
 
   // Méthodes
+
+  void extendTable() {
+    if (extensible) {
+      this.longueur += 20;
+    }
+  }
+
+  String carac() {
+    return "Salut je suis la table en $matiere, idéale pour le petit déjeuner.";
+  }
+
+  void changerPieds(int nouveauNombre) {
+    pieds = nouveauNombre;
+  }
 
 }
 
@@ -64,7 +79,10 @@ void main(List<String> args) {
   // tableIkea.longueur = 120;
   // tableIkea.matiere = "Or";
   // print(tableIkea.matiere);
-  print("Ma table a ${tableIkea.pieds} pieds, est haute de ${tableIkea.hauteur} cm, longue de ${tableIkea.longueur} cm ,large de ${tableIkea.largeur} cm et est faite en ${tableIkea.matiere}");
+  tableIkea.extendTable();
+  tableIkea.changerPieds(8);
+  print(tableIkea.carac());
+  print("J'ai ${tableIkea.pieds} pieds, je suis haute de ${tableIkea.hauteur} cm, longue de ${tableIkea.longueur} cm ,large de ${tableIkea.largeur} cm");
   
 
 }
