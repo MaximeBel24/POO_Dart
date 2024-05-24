@@ -48,7 +48,7 @@ class Table {
 
 
   // Façons 4 (avec attributs required)
-  Table({required this.pieds, required this.hauteur, required this.largeur, required this.longueur, required this.matiere, this.extensible = true}){}
+  Table({required this.pieds, required this.hauteur, required this.largeur, required this.longueur, required this.matiere, required this.extensible}){}
 
   // Méthodes
 
@@ -59,7 +59,7 @@ class Table {
   }
 
   String carac() {
-    return "Salut je suis la table en $matiere, idéale pour le petit déjeuner.";
+    return "Salut je suis la table en $matiere. J'ai $pieds pieds, je suis haute de $hauteur cm, longue de $longueur cm ,large de $largeur cm, je suis idéale pour le petit déjeuner";
   }
 
   void changerPieds(int nouveauNombre) {
@@ -68,10 +68,35 @@ class Table {
 
 }
 
+class TableEte extends Table {
+  String parasol;
+
+  TableEte({
+    required this.parasol,
+    required int pieds, 
+    required double hauteur, 
+    required double largeur, 
+    required double longueur, 
+    required String matiere, 
+    required bool extensible
+    }): super(
+    pieds : pieds,
+    hauteur : hauteur,
+    largeur : largeur,
+    longueur : longueur,
+    matiere : matiere,
+    extensible: extensible
+  );
+
+  void seProteger() {
+    print("On est mieux à l'ombre");
+  }
+}
+
 void main(List<String> args) {
 
   // var tableIkea = Table(4, 78, 58.9, 140, "Plastique");
-  Table tableIkea = Table(pieds: 1, matiere: "Verre", hauteur: 32, largeur: 60, longueur: 120);
+  // Table tableIkea = Table(pieds: 1, matiere: "Verre", hauteur: 32, largeur: 60, longueur: 120);
   // print(tableIkea.pieds);
   // tableIkea.hauteur = 80;
   // print(tableIkea.hauteur);
@@ -79,10 +104,14 @@ void main(List<String> args) {
   // tableIkea.longueur = 120;
   // tableIkea.matiere = "Or";
   // print(tableIkea.matiere);
-  tableIkea.extendTable();
-  tableIkea.changerPieds(8);
-  print(tableIkea.carac());
-  print("J'ai ${tableIkea.pieds} pieds, je suis haute de ${tableIkea.hauteur} cm, longue de ${tableIkea.longueur} cm ,large de ${tableIkea.largeur} cm");
-  
+  // tableIkea.extendTable();
+  // tableIkea.changerPieds(8);
+  // print(tableIkea.carac());
+  // print("J'ai ${tableIkea.pieds} pieds, je suis haute de ${tableIkea.hauteur} cm, longue de ${tableIkea.longueur} cm ,large de ${tableIkea.largeur} cm");
+
+  TableEte ete = TableEte(parasol: "Perrier", pieds: 3, hauteur: 84, largeur: 375, longueur: 375, matiere: "Plastique", extensible: true);
+
+  print(ete.carac());
+  ete.seProteger();
 
 }
