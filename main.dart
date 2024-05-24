@@ -71,8 +71,11 @@ class Table {
 class TableEte extends Table {
   String parasol;
 
+  TypeDeTable type;
+
   TableEte({
     required this.parasol,
+    required this.type,
     required int pieds, 
     required double hauteur, 
     required double largeur, 
@@ -89,8 +92,25 @@ class TableEte extends Table {
   );
 
   void seProteger() {
-    print("On est mieux à l'ombre");
+    print("On est bien mieux à l'ombre");
   }
+
+  String checkType() {
+    switch (type) {
+      case TypeDeTable.tableDeJardin: return 'Table de Jardin';
+      case TypeDeTable.tableDeSalon: return 'Table de Salon';
+      case TypeDeTable.tableAManger: return 'Table à manger';
+      case TypeDeTable.tableDePingPong: return 'Table de Ping Pong';
+
+    }
+  }
+}
+
+enum TypeDeTable {
+  tableDeJardin,
+  tableDeSalon,
+  tableAManger,
+  tableDePingPong
 }
 
 void main(List<String> args) {
@@ -109,9 +129,10 @@ void main(List<String> args) {
   // print(tableIkea.carac());
   // print("J'ai ${tableIkea.pieds} pieds, je suis haute de ${tableIkea.hauteur} cm, longue de ${tableIkea.longueur} cm ,large de ${tableIkea.largeur} cm");
 
-  TableEte ete = TableEte(parasol: "Perrier", pieds: 3, hauteur: 84, largeur: 375, longueur: 375, matiere: "Plastique", extensible: true);
+  TableEte ete = TableEte(parasol: "Perrier",type: TypeDeTable.tableDeJardin , pieds: 3, hauteur: 84, largeur: 375, longueur: 375, matiere: "Plastique", extensible: true);
 
   print(ete.carac());
   ete.seProteger();
+  print(ete.checkType());
 
 }
